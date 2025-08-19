@@ -153,7 +153,7 @@
 
     /* Responsive */
     @media (max-width: 990px){
-      .hero .inner{grid-template-columns:1fr; padding:44px 0}
+      .hero .inner{grid-template-columns:1fr; padding:44px 6px;}
       .kpis{grid-template-columns:repeat(2,1fr)}
       .card{grid-column:span 6}
       .about{grid-template-columns:1fr}
@@ -161,9 +161,12 @@
       .dialog-body{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
+       body{padding:4px;}
+       section{padding:6px;}
       .grid{grid-template-columns:repeat(6,1fr)}
       .card{grid-column:span 6}
-      .nav{gap:8px}
+      .nav{gap:8px;justify-content:center;}
+      .brand{display:none;}
       .brand h1{font-size:16px}
       .title{font-size:28px}
     }
