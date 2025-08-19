@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,7 +30,10 @@
     body{
       margin:0;
       font:16px/1.5 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-      color:var(--text); background: radial-gradient(1200px 600px at 20% -10%, rgb(0 0 0), #0a0908eb 60%), radial-gradient(900px 500px at 90% 10%, #000000a6 60%);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgb(0 0 0), #0a0908eb 60%),
+        radial-gradient(900px 500px at 90% 10%, #000000a6 60%);
       letter-spacing:.2px;
     }
     a{color:inherit; text-decoration:none}
@@ -51,7 +55,12 @@
     .btn.brand{border-color:transparent; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0c1120; font-weight:700}
 
     /* Hero */
-    .hero{position:relative; overflow:hidden; background: radial-gradient(1200px 600px at 20% -10%, rgba(106, 166, 255, .25), transparent 60%), radial-gradient(900px 500px at 90% 10%, rgba(122, 240, 200, .18), transparent 60%), linear-gradient(180deg, #312e2a 0%, #0d1017 60%, #2d2002 100%);}
+    .hero{position:relative; overflow:hidden;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(106, 166, 255, .25), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(122, 240, 200, .18), transparent 60%),
+        linear-gradient(180deg, #312e2a 0%, #0d1017 60%, #2d2002 100%);
+    }
     .hero .inner{display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:36px; padding:64px 0}
     .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; font-size:12px; border-radius:999px; background:rgba(122,240,200,.08); border:1px solid rgba(122,240,200,.25); color:#bff5e5}
     .title{font-size:clamp(32px, 4vw, 48px); line-height:1.1; margin:14px 0 12px; letter-spacing:.3px}
@@ -64,15 +73,36 @@
     /* Toolbar */
     .toolbar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin:34px 0 16px}
     .tabs{display:flex; gap:10px; flex-wrap:wrap}
-    .tab{padding:8px 12px; border-radius:999px; border:1px solid var(--stroke); background:var(--glass); cursor:pointer; font-size:14px;color: white;}
+    .tab{padding:8px 12px; border-radius:999px; border:1px solid var(--stroke); background:var(--glass); cursor:pointer; font-size:14px; color: white;}
     .tab.active{background:linear-gradient(135deg, rgba(106,166,255,.2), rgba(122,240,200,.2)); border-color:transparent}
     .search{display:flex; align-items:center; gap:10px; flex:1; min-width:260px; border:1px solid var(--stroke); background:var(--glass); border-radius:12px; padding:10px}
     .search input{background:transparent; border:0; outline:0; color:var(--text); width:100%}
 
     /* Grid */
     .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
-    .card{grid-column:span 4; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; min-height:360px; position:relative}
-    .media{height:180px; background:radial-gradient(120% 120% at 20% 10%, rgba(106,166,255,.3), transparent 60%), radial-gradient(100% 120% at 80% 10%, rgba(122,240,200,.22), transparent 60%), linear-gradient(180deg,#0b0d12,#0b0d12); border-bottom:1px solid var(--stroke)}
+    .card{grid-column:span 4; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; min-height:380px; position:relative}
+    .media{
+      height:200px;
+      background:
+        radial-gradient(120% 120% at 20% 10%, rgba(106,166,255,.3), transparent 60%),
+        radial-gradient(100% 120% at 80% 10%, rgba(122,240,200,.22), transparent 60%),
+        linear-gradient(180deg,#0b0d12,#0b0d12);
+      border-bottom:1px solid var(--stroke);
+      display:flex; align-items:center; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .media img{
+      max-width:100%; max-height:100%;
+      object-fit:contain;
+      filter:drop-shadow(0 12px 24px rgba(0,0,0,.45));
+    }
+    .price-tag{
+      position:absolute; top:12px; right:12px;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      color:#0b0d12; font-weight:800; font-size:13px;
+      border-radius:999px; padding:6px 10px; box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,.15);
+    }
     .badge-tag{position:absolute; top:12px; left:12px; background:rgba(0,0,0,.35); border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; font-size:12px; backdrop-filter:blur(4px)}
     .content{padding:16px; display:grid; gap:8px}
     .content h3{margin:0; font-size:18px}
@@ -82,12 +112,16 @@
     .actions{display:flex; gap:10px; padding:14px 16px 16px; margin-top:auto}
 
     /* Floating Quote (mini-cart) */
-    .quote{position:fixed; right:18px; bottom:18px; width:min(400px, 92vw); border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:18px; box-shadow:var(--shadow); display:none}
+    .quote{position:fixed; right:18px; bottom:18px; width:min(440px, 92vw); border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:18px; box-shadow:var(--shadow); display:none}
     .quote.active{display:block}
     .quote header{display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--stroke)}
-    .quote .list{max-height:260px; overflow:auto; display:grid; gap:8px; padding:12px 14px}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:999px; border:1px solid var(--stroke); background:var(--glass)}
+    .quote .list{max-height:300px; overflow:auto; display:grid; gap:8px; padding:12px 14px}
+    .pill{display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px; padding:8px 10px; border-radius:12px; border:1px solid var(--stroke); background:var(--glass)}
+    .line-right{display:flex; align-items:center; gap:6px}
+    .qty{display:inline-flex; align-items:center; gap:6px; border:1px solid var(--stroke); border-radius:10px; padding:3px 6px}
+    .qty button{background:transparent; border:0; color:var(--text); cursor:pointer; padding:0 6px; font-weight:700}
     .quote .footer{display:grid; gap:10px; padding:14px}
+    .total{display:flex; align-items:center; justify-content:space-between}
 
     /* Sections */
     section{padding:54px 0}
@@ -101,6 +135,23 @@
     .foot{display:grid; grid-template-columns:1.2fr .8fr; gap:20px; padding:24px 0}
     .muted{color:var(--muted)}
 
+    /* Dialog & Gallery */
+    .dialog-backdrop{position:fixed; inset:0; background:rgba(7,10,16,.6); display:grid; place-items:center; z-index:60}
+    .dialog{width:min(980px,92vw); border:1px solid var(--stroke); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow:var(--shadow); overflow:hidden}
+    .dialog header, .dialog footer{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--stroke)}
+    .dialog footer{border-top:1px solid var(--stroke); border-bottom:none}
+    .dialog-body{padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .detail-media{display:grid; gap:10px}
+    .gallery-main{position:relative; border:1px solid var(--stroke); border-radius:16px; overflow:hidden; background:var(--glass); display:grid; place-items:center; height:360px}
+    .gallery-main img{max-width:100%; max-height:100%; object-fit:contain; filter:drop-shadow(0 16px 32px rgba(0,0,0,.5))}
+    .gallery-thumbs{display:flex; gap:8px; overflow:auto}
+    .thumb{width:70px; height:70px; border-radius:10px; border:1px solid var(--stroke); background:var(--glass); display:grid; place-items:center; cursor:pointer; opacity:.85}
+    .thumb img{max-width:100%; max-height:100%; object-fit:contain}
+    .thumb.active{outline:2px solid var(--brand-2); opacity:1}
+    .nav-arrow{position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.35); border:1px solid var(--stroke); border-radius:999px; padding:6px 10px; cursor:pointer; user-select:none}
+    .nav-arrow.left{left:10px}
+    .nav-arrow.right{right:10px}
+
     /* Responsive */
     @media (max-width: 990px){
       .hero .inner{grid-template-columns:1fr; padding:44px 0}
@@ -108,6 +159,7 @@
       .card{grid-column:span 6}
       .about{grid-template-columns:1fr}
       .foot{grid-template-columns:1fr}
+      .dialog-body{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .grid{grid-template-columns:repeat(6,1fr)}
@@ -233,7 +285,7 @@
         <div style="display:grid; gap:10px; margin-top:8px">
           <a class="pill" href="#" id="wppFooter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.51 11.51 0 003.5 20.5l-1 3 3-1A11.51 11.51 0 0020.5 3.5z" stroke="currentColor" stroke-width="1.6"/><path d="M8 10c.5 2 2.5 4 4.5 4.5M8 10l1.5-1.5M12.5 14.5L14 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> WhatsApp</a>
           <a class="pill" href="mailto:contacto@laboratoriosfarmabelleza.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/></svg> contacto@laboratoriosfarmabelleza.com</a>
-          <a class="pill" href="https://maps.google.com/?q=Bucaramanga%2C%20Santander%2C%20Colombia" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.35 7-10a7 7 0 10-14 0c0 5.65 7 10 7 10z" stroke="currentColor" stroke-width="1.6" fill="none"/></svg> Ver en mapa</a>
+          <a class="pill" href="https://maps.google.com/?q=Bucaramanga%2C%20Santander%2C%20Colombia" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.35 7-10a7 7 0 10-14 0c 0 5.65 7 10 7 10z" stroke="currentColor" stroke-width="1.6" fill="none"/></svg> Ver en mapa</a>
         </div>
       </div>
     </div>
@@ -262,121 +314,163 @@
     <div class="list" id="quoteList"></div>
     <div class="footer">
       <textarea id="note" rows="3" placeholder="Notas adicionales (presentación, cantidades, ciudad)…" style="width:100%; background:var(--glass); border:1px solid var(--stroke); border-radius:12px; color:var(--text); padding:10px"></textarea>
-      <div style="display:flex; gap:10px; align-items:center; justify-content:space-between">
+      <div class="total">
         <small class="muted" id="totalItems">0 productos</small>
+        <b id="totalAmount">$0</b>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; justify-content:space-between">
+        <small class="muted">Los precios son de referencia.</small>
         <button class="btn brand" id="sendWpp">Enviar por WhatsApp</button>
       </div>
     </div>
   </aside>
 
   <script>
-    // ======= DATA (Curado a partir del PDF) =======
+    // ======= BRAND & HELPERS =======
     const BRAND = {
       name: "Laboratorios Farmabelleza",
       line: "TECNOPRO",
       whatsapp: "573001234567" // ← Reemplazar por número real (sin +)
     };
 
+    const fmtCOP = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
+    const IMG_BASE = "img/";
+    const imgSrc = (path) => /^https?:/i.test(path) ? path : (IMG_BASE + path);
+
+    // ======= CDN BASE (edita esta URL a tu hosting / Cloudinary / CDN) =======
+    const CDN = "https://cdn.tu-dominio.com/tecnopro/"; // debe terminar en '/'
+
+    // ======= CATEGORÍAS =======
     const CATEGORIES = ["Todos","Alisado","Tratamiento","Matizantes","Tintes","Niños"];
 
+    // ======= PRODUCTOS (con precios y galería) =======
+    // Nota: Los precios son EJEMPLO de referencia; ajústalos a tu lista real.
     const PRODUCTS = [
       {
         id:"shock-aminoacidos",
         nombre:"Shock de Aminoácidos",
         resumen:"Alisado en 4 pasos diseñado para cabellos rubios. Evita tonos naranjas y deja un acabado sedoso.",
         tags:["4 pasos","Rubios","Aminoácidos","Proteínas"],
-        categoria:"Alisado"
+        categoria:"Alisado",
+        precio: 149900,
+        imgs:[`${CDN}shock-aminoacidos.webp`, `${CDN}shock-aminoacidos-2.webp`, `${CDN}shock-aminoacidos-3.webp`]
       },
       {
         id:"keratina-express",
         nombre:"Keratina Express",
         resumen:"Sistema de alisado en 3 pasos con resultado profesional y brillo inmediato.",
         tags:["3 pasos","Liso perfecto","Brillo"],
-        categoria:"Alisado"
+        categoria:"Alisado",
+        precio: 129900,
+        imgs:[`${CDN}keratina-express.webp`, `${CDN}keratina-express-2.webp`]
       },
       {
         id:"liso-laminado",
         nombre:"Liso Laminado",
         resumen:"Efecto espejo con protocolo de 4 pasos. Control de frizz y suavidad extrema.",
         tags:["Efecto espejo","4 pasos","Antifrizz"],
-        categoria:"Alisado"
+        categoria:"Alisado",
+        precio: 159900,
+        imgs:[`${CDN}liso-laminado.webp`, `${CDN}liso-laminado-2.webp`]
       },
       {
         id:"topliss-4k",
         nombre:"Top-Liss 4K",
         resumen:"Alisado de alto desempeño, acabado ultra pulido 4K.",
         tags:["Alto desempeño","Largo efecto"],
-        categoria:"Alisado"
+        categoria:"Alisado",
+        precio: 169900,
+        imgs:[`${CDN}topliss-4k.webp`]
       },
       {
         id:"farMaplex",
         nombre:"FarmaPlex",
         resumen:"Escudo protector de fibra durante procesos químicos y coloración.",
         tags:["Protección","Coloración","Fibras"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 99900,
+        imgs:[`${CDN}farmaplex.webp`, `${CDN}farmaplex-2.webp`]
       },
       {
         id:"shot-reconstructor",
         nombre:"Shot Reconstructor",
         resumen:"Ampolla/shot con proteínas reparadoras para fortalecer y devolver elasticidad.",
         tags:["Reparación","Elasticidad"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 25900,
+        imgs:[`${CDN}shot-reconstructor.webp`]
       },
       {
         id:"relleno-proteinico",
         nombre:"Relleno Proteínico",
         resumen:"Reconstructor intensivo que repone masa y sella cutícula.",
         tags:["Reconstructor","Proteínas"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 79900,
+        imgs:[`${CDN}relleno-proteinico.webp`]
       },
       {
         id:"aceite-coco",
         nombre:"Aceite de Coco",
         resumen:"Nutrición, brillo y suavidad. Apoyo en sellado de puntas.",
         tags:["Nutrición","Brillo"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 34900,
+        imgs:[`${CDN}aceite-coco.webp`]
       },
       {
         id:"aceite-cannabis",
         nombre:"Aceite de Cannabis",
         resumen:"Hidratación profunda y fortalecimiento de fibra capilar.",
         tags:["Hidratación","Fortaleza"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 39900,
+        imgs:[`${CDN}aceite-cannabis.webp`]
       },
       {
         id:"rubios-platinos",
         nombre:"Rubios & Platinados (Matizantes)",
         resumen:"Matizantes para neutralizar amarillos/naranjas y mantener rubios fríos.",
         tags:["Matizante","Rubios"],
-        categoria:"Matizantes"
+        categoria:"Matizantes",
+        precio: 45900,
+        imgs:[`${CDN}rubios-platinos.webp`]
       },
       {
         id:"matizantes",
         nombre:"Matizantes Violeta/Azul",
         resumen:"Corrección de tono y mantenimiento del color entre servicios.",
         tags:["Violeta","Azul","Neutraliza"],
-        categoria:"Matizantes"
+        categoria:"Matizantes",
+        precio: 42900,
+        imgs:[`${CDN}matizantes.webp`]
       },
       {
         id:"tinte-permanente",
         nombre:"Tinte Permanente",
         resumen:"Coloración profesional de alto cubrimiento y brillo.",
         tags:["Color","Cobertura"],
-        categoria:"Tintes"
+        categoria:"Tintes",
+        precio: 17900,
+        imgs:[`${CDN}tinte-permanente.webp`]
       },
       {
         id:"cebolla-roja",
         nombre:"Cebolla Roja Cabezona",
         resumen:"Línea revitalizante (shampoo + mascarilla + tratamiento). Ideal cabello largo.",
         tags:["Revitaliza","Cabello largo"],
-        categoria:"Tratamiento"
+        categoria:"Tratamiento",
+        precio: 54900,
+        imgs:[`${CDN}cebolla-roja.webp`]
       },
       {
         id:"tecno-pro-kid",
         nombre:"Tecno Pro Kid",
         resumen:"Cuidado suave y seguro para niños.",
         tags:["Niños","Suavidad"],
-        categoria:"Niños"
+        categoria:"Niños",
+        precio: 29900,
+        imgs:[`${CDN}tecno-pro-kid.webp`]
       }
     ];
 
@@ -387,8 +481,10 @@
     const $quote = document.querySelector('#quote');
     const $quoteList = document.querySelector('#quoteList');
     const $totalItems = document.querySelector('#totalItems');
+    const $totalAmount = document.querySelector('#totalAmount');
 
     let state = { cat:"Todos", q:"", cart:[] };
+    // cart item: { id, qty }
 
     function renderTabs(){
       $tabs.innerHTML = '';
@@ -408,6 +504,11 @@
       return matchesCat && matchesQ;
     }
 
+    function cardImage(p){
+      const src = (p.imgs && p.imgs.length ? p.imgs[0] : (p.img || (p.id + '.jpg')));
+      return (src || '').toLowerCase();
+    }
+
     function renderGrid(){
       const list = PRODUCTS.filter(match);
       $grid.innerHTML = '';
@@ -417,6 +518,7 @@
         card.innerHTML = `
           <div class="media"></div>
           <span class="badge-tag">${p.categoria}</span>
+          <span class="price-tag">${fmtCOP.format(p.precio || 0)}</span>
           <div class="content">
             <h3>${p.nombre}</h3>
             <p>${p.resumen}</p>
@@ -428,6 +530,16 @@
           </div>
         `;
         $grid.appendChild(card);
+
+        // Imagen en la tarjeta
+        const media = card.querySelector('.media');
+        if (media) {
+          const img = document.createElement('img');
+          img.src = imgSrc(cardImage(p));
+          img.alt = p.nombre;
+          img.loading = 'lazy';
+          media.appendChild(img);
+        }
       })
       bindCardActions();
     }
@@ -436,8 +548,9 @@
       document.querySelectorAll('[data-add]').forEach(btn=>{
         btn.onclick = ()=>{
           const id = btn.getAttribute('data-add');
-          const p = PRODUCTS.find(x=>x.id===id);
-          if(!state.cart.some(x=>x.id===id)) state.cart.push(p);
+          const idx = state.cart.findIndex(x=>x.id===id);
+          if (idx>=0) state.cart[idx].qty += 1;
+          else state.cart.push({ id, qty: 1 });
           openQuote();
           renderQuote();
         }
@@ -450,18 +563,50 @@
       })
     }
 
+    function productById(id){ return PRODUCTS.find(x=>x.id===id); }
+
     function renderQuote(){
       $quoteList.innerHTML = '';
-      state.cart.forEach(p=>{
+      let totalQty = 0, totalAmount = 0;
+      state.cart.forEach(item=>{
+        const p = productById(item.id);
+        const lineTotal = (p.precio||0) * item.qty;
+        totalQty += item.qty;
+        totalAmount += lineTotal;
+
         const row = document.createElement('div');
         row.className = 'pill';
-        row.innerHTML = `<strong>${p.nombre}</strong> · <span class='muted'>${p.categoria}</span> <button class='btn' data-del='${p.id}' style='padding:4px 8px'>Quitar</button>`;
+        row.innerHTML = `
+          <div>
+            <strong>${p.nombre}</strong> · <span class='muted'>${p.categoria}</span>
+            <div class='muted'>${fmtCOP.format(p.precio || 0)} c/u</div>
+          </div>
+          <div class='line-right'>
+            <div class='qty'>
+              <button data-dec='${p.id}' aria-label='disminuir'>–</button>
+              <span>${item.qty}</span>
+              <button data-inc='${p.id}' aria-label='aumentar'>+</button>
+            </div>
+            <b>${fmtCOP.format(lineTotal)}</b>
+            <button class='btn' data-del='${p.id}' style='padding:4px 8px'>Quitar</button>
+          </div>`;
         $quoteList.appendChild(row);
       })
-      $totalItems.textContent = `${state.cart.length} producto${state.cart.length!==1?'s':''}`;
-      document.querySelectorAll('[data-del]').forEach(b=> b.onclick = ()=>{
+      $totalItems.textContent = `${totalQty} producto${totalQty!==1?'s':''}`;
+      $totalAmount.textContent = fmtCOP.format(totalAmount);
+
+      // Events
+      $quoteList.querySelectorAll('[data-del]').forEach(b=> b.onclick = ()=>{
         const id = b.getAttribute('data-del');
         state.cart = state.cart.filter(x=>x.id!==id); renderQuote();
+      });
+      $quoteList.querySelectorAll('[data-inc]').forEach(b=> b.onclick = ()=>{
+        const id = b.getAttribute('data-inc');
+        const it = state.cart.find(x=>x.id===id); if (it) it.qty++; renderQuote();
+      });
+      $quoteList.querySelectorAll('[data-dec]').forEach(b=> b.onclick = ()=>{
+        const id = b.getAttribute('data-dec');
+        const it = state.cart.find(x=>x.id===id); if (it) { it.qty--; if (it.qty<=0) state.cart = state.cart.filter(x=>x.id!==id); } renderQuote();
       });
     }
 
@@ -469,19 +614,36 @@
     function closeQuote(){ $quote.classList.remove('active'); }
 
     function openDetails(id){
-      const p = PRODUCTS.find(x=>x.id===id);
+      const p = productById(id);
+      const images = p.imgs && p.imgs.length ? p.imgs : [p.img || (p.id + '.jpg')];
+      let current = 0;
+
       const html = `
         <div class='dialog-backdrop' role='dialog' aria-modal='true'>
           <div class='dialog'>
             <header>
               <strong>${p.nombre}</strong>
-              <button class='btn' data-close>Close</button>
+              <button class='btn' data-close>Cerrar</button>
             </header>
             <div class='dialog-body'>
-              <p class='muted'>${p.resumen}</p>
-              <ul style='margin:10px 0 0; padding-left:18px'>
-                ${(p.tags||[]).map(t=>`<li>${t}</li>`).join('')}
-              </ul>
+              <div class='detail-media'>
+                <div class='gallery-main'>
+                  <button class='nav-arrow left' data-prev>❮</button>
+                  <img alt='${p.nombre}' />
+                  <button class='nav-arrow right' data-next>❯</button>
+                </div>
+                <div class='gallery-thumbs'></div>
+              </div>
+              <div class='detail-info'>
+                <div style='display:flex; align-items:center; justify-content:space-between; gap:8px'>
+                  <p class='muted' style='margin:0'>${p.categoria}</p>
+                  <b style='font-size:20px'>${fmtCOP.format(p.precio || 0)}</b>
+                </div>
+                <p class='muted'>${p.resumen}</p>
+                <ul style='margin:10px 0 0; padding-left:18px'>
+                  ${(p.tags||[]).map(t=>`<li>${t}</li>`).join('')}
+                </ul>
+              </div>
             </div>
             <footer>
               <button class='btn' data-close>Volver</button>
@@ -492,20 +654,48 @@
       const wrap = document.createElement('div');
       wrap.innerHTML = html;
       document.body.appendChild(wrap);
-      wrap.querySelectorAll('[data-close]').forEach(b=> b.onclick = ()=> wrap.remove());
-      wrap.querySelectorAll('[data-add]').forEach(b=> b.onclick = ()=>{ state.cart.push(p); renderQuote(); openQuote(); wrap.remove(); })
-    }
 
-    // Dialog styles
-    const style = document.createElement('style');
-    style.textContent = `
-      .dialog-backdrop{position:fixed; inset:0; background:rgba(7,10,16,.6); display:grid; place-items:center; z-index:60}
-      .dialog{width:min(680px,92vw); border:1px solid var(--stroke); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow:var(--shadow); overflow:hidden}
-      .dialog header, .dialog footer{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--stroke)}
-      .dialog footer{border-top:1px solid var(--stroke); border-bottom:none}
-      .dialog-body{padding:14px}
-    `;
-    document.head.appendChild(style);
+      const mainImg = wrap.querySelector('.gallery-main img');
+      const thumbs = wrap.querySelector('.gallery-thumbs');
+      function show(i){
+        current = (i + images.length) % images.length;
+        mainImg.src = imgSrc(images[current].toLowerCase());
+        [...thumbs.children].forEach((t,idx)=> t.classList.toggle('active', idx===current));
+      }
+      // build thumbs
+      images.forEach((src, idx)=>{
+        const th = document.createElement('div');
+        th.className = 'thumb' + (idx===0 ? ' active' : '');
+        th.innerHTML = `<img alt='thumb ${idx+1}' src='${imgSrc(src.toLowerCase())}' />`;
+        th.onclick = ()=> show(idx);
+        thumbs.appendChild(th);
+      });
+      show(0);
+
+      // arrows + keyboard
+      wrap.querySelector('[data-prev]').onclick = ()=> show(current-1);
+      wrap.querySelector('[data-next]').onclick = ()=> show(current+1);
+      const onKey = (e)=>{
+        if(e.key==='ArrowLeft') show(current-1);
+        if(e.key==='ArrowRight') show(current+1);
+        if(e.key==='Escape') close();
+      };
+      window.addEventListener('keydown', onKey);
+
+      function close(){
+        window.removeEventListener('keydown', onKey);
+        wrap.remove();
+      }
+
+      // actions
+      wrap.querySelectorAll('[data-close]').forEach(b=> b.onclick = close);
+      wrap.querySelectorAll('[data-add]').forEach(b=> b.onclick = ()=>{
+        const idx = state.cart.findIndex(x=>x.id===p.id);
+        if (idx>=0) state.cart[idx].qty += 1;
+        else state.cart.push({ id:p.id, qty:1 });
+        renderQuote(); openQuote(); close();
+      });
+    }
 
     function debounce(fn,ms){let t;return function(){clearTimeout(t);t=setTimeout(()=>fn.apply(this,arguments),ms)}}
 
@@ -521,9 +711,16 @@
 
     // WhatsApp compose
     function buildWppText(){
-      const items = state.cart.map(x=>`• ${x.nombre} (${x.categoria})`).join('%0A');
+      const lines = state.cart.map(item => {
+        const p = productById(item.id);
+        const lineTotal = (p.precio||0) * item.qty;
+        return `• ${p.nombre} x${item.qty} – ${fmtCOP.format(p.precio||0)} c/u = ${fmtCOP.format(lineTotal)}`;
+      });
+      const total = state.cart.reduce((acc, it)=>{
+        const p = productById(it.id); return acc + (p.precio||0)*it.qty;
+      }, 0);
       const note = encodeURIComponent(document.getElementById('note').value || '');
-      const base = `Hola, quiero cotizar:%0A${items}%0A%0A${note ? ('Notas: '+note) : ''}`;
+      const base = `Hola, quiero cotizar:%0A${encodeURIComponent(lines.join('%0A'))}%0A%0ATotal: ${encodeURIComponent(fmtCOP.format(total))}%0A${note ? ('Notas: '+note) : ''}`;
       return base;
     }
 
