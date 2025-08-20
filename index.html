@@ -111,7 +111,7 @@
     .actions{display:flex; gap:10px; padding:14px 16px 16px; margin-top:auto}
 
     /* Floating Quote (mini-cart) */
-    .quote{position:fixed; right:18px; bottom:18px; width:min(440px, 92vw); border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:18px; box-shadow:var(--shadow); display:none}
+    .quote{position:fixed; right:18px; bottom:18px; width:min(440px, 92vw); border:1px solid var(--stroke); background:linear-gradient(180deg, rgb(71 71 71), rgb(0 0 0)); border-radius:18px; box-shadow:var(--shadow); display:none}
     .quote.active{display:block}
     .quote header{display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--stroke)}
     .quote .list{max-height:300px; overflow:auto; display:grid; gap:8px; padding:12px 14px}
@@ -136,7 +136,7 @@
 
     /* Dialog & Gallery */
     .dialog-backdrop{position:fixed; inset:0; background:rgba(7,10,16,.6); display:grid; place-items:center; z-index:60}
-    .dialog{width:min(980px,92vw); border:1px solid var(--stroke); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow:var(--shadow); overflow:hidden}
+    .dialog{width:min(980px,92vw); border:1px solid var(--stroke); border-radius:20px; background:linear-gradient(180deg, rgb(71 71 71), rgb(0 0 0)); box-shadow:var(--shadow); overflow:hidden}
     .dialog header, .dialog footer{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-bottom:1px solid var(--stroke)}
     .dialog footer{border-top:1px solid var(--stroke); border-bottom:none}
     .dialog-body{padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:16px}
@@ -344,137 +344,179 @@
     const CDN = "https://cdn.tu-dominio.com/tecnopro/"; // debe terminar en '/'
 
     // ======= CATEGORÍAS =======
-    const CATEGORIES = ["Todos","Alisado","Tratamiento","Matizantes","Tintes","Niños"];
+    const CATEGORIES = [ 
+    "Todos",
+    "Botox Like",
+    "Botox",
+    "Cannabis",
+    "Cebolla",
+    "3D",
+    "Coco",
+    "Express",
+    "Rubios Platinados",
+    "Liso Laminado",
+    "4K",
+    "Farma Plex",
+    "TecnoPro",
+    "Rizos",
+    "Niños"
+];
 
     // ======= PRODUCTOS (con precios y galería) =======
     // Nota: Los precios son EJEMPLO de referencia; ajústalos a tu lista real.
     const PRODUCTS = [
-      {
-        id:"shock-aminoacidos",
-        nombre:"Shock de Aminoácidos",
-        resumen:"Alisado en 4 pasos diseñado para cabellos rubios. Evita tonos naranjas y deja un acabado sedoso.",
-        tags:["4 pasos","Rubios","Aminoácidos","Proteínas"],
-        categoria:"Alisado",
-        precio: 149900,
-        imgs:[`${CDN}shock-aminoacidos.webp`, `${CDN}shock-aminoacidos-2.webp`, `${CDN}shock-aminoacidos-3.webp`]
-      },
-      {
-        id:"keratina-express",
-        nombre:"Keratina Express",
-        resumen:"Sistema de alisado en 3 pasos con resultado profesional y brillo inmediato.",
-        tags:["3 pasos","Liso perfecto","Brillo"],
-        categoria:"Alisado",
-        precio: 129900,
-        imgs:[`${CDN}keratina-express.webp`, `${CDN}keratina-express-2.webp`]
-      },
-      {
-        id:"liso-laminado",
-        nombre:"Liso Laminado",
-        resumen:"Efecto espejo con protocolo de 4 pasos. Control de frizz y suavidad extrema.",
-        tags:["Efecto espejo","4 pasos","Antifrizz"],
-        categoria:"Alisado",
-        precio: 159900,
-        imgs:[`${CDN}liso-laminado.webp`, `${CDN}liso-laminado-2.webp`]
-      },
-      {
-        id:"topliss-4k",
-        nombre:"Top-Liss 4K",
-        resumen:"Alisado de alto desempeño, acabado ultra pulido 4K.",
-        tags:["Alto desempeño","Largo efecto"],
-        categoria:"Alisado",
-        precio: 169900,
-        imgs:[`${CDN}topliss-4k.webp`]
-      },
-      {
-        id:"farMaplex",
-        nombre:"FarmaPlex",
-        resumen:"Escudo protector de fibra durante procesos químicos y coloración.",
-        tags:["Protección","Coloración","Fibras"],
-        categoria:"Tratamiento",
-        precio: 99900,
-        imgs:[`${CDN}farmaplex.webp`, `${CDN}farmaplex-2.webp`]
-      },
-      {
-        id:"shot-reconstructor",
-        nombre:"Shot Reconstructor",
-        resumen:"Ampolla/shot con proteínas reparadoras para fortalecer y devolver elasticidad.",
-        tags:["Reparación","Elasticidad"],
-        categoria:"Tratamiento",
-        precio: 25900,
-        imgs:[`${CDN}shot-reconstructor.webp`]
-      },
-      {
-        id:"relleno-proteinico",
-        nombre:"Relleno Proteínico",
-        resumen:"Reconstructor intensivo que repone masa y sella cutícula.",
-        tags:["Reconstructor","Proteínas"],
-        categoria:"Tratamiento",
-        precio: 79900,
-        imgs:[`${CDN}relleno-proteinico.webp`]
-      },
-      {
-        id:"aceite-coco",
-        nombre:"Aceite de Coco",
-        resumen:"Nutrición, brillo y suavidad. Apoyo en sellado de puntas.",
-        tags:["Nutrición","Brillo"],
-        categoria:"Tratamiento",
-        precio: 34900,
-        imgs:[`aceitedecoco.webp`]
-      },
-      {
-        id:"aceite-cannabis",
-        nombre:"Aceite de Cannabis",
-        resumen:"Hidratación profunda y fortalecimiento de fibra capilar.",
-        tags:["Hidratación","Fortaleza"],
-        categoria:"Tratamiento",
-        precio: 39900,
-        imgs:[`${CDN}aceite-cannabis.webp`]
-      },
-      {
-        id:"rubios-platinos",
-        nombre:"Rubios & Platinados (Matizantes)",
-        resumen:"Matizantes para neutralizar amarillos/naranjas y mantener rubios fríos.",
-        tags:["Matizante","Rubios"],
-        categoria:"Matizantes",
-        precio: 45900,
-        imgs:[`${CDN}rubios-platinos.webp`]
-      },
-      {
-        id:"matizantes",
-        nombre:"Matizantes Violeta/Azul",
-        resumen:"Corrección de tono y mantenimiento del color entre servicios.",
-        tags:["Violeta","Azul","Neutraliza"],
-        categoria:"Matizantes",
-        precio: 42900,
-        imgs:[`${CDN}matizantes.webp`]
-      },
-      {
-        id:"tinte-permanente",
-        nombre:"Tinte Permanente",
-        resumen:"Coloración profesional de alto cubrimiento y brillo.",
-        tags:["Color","Cobertura"],
-        categoria:"Tintes",
-        precio: 17900,
-        imgs:[`${CDN}tinte-permanente.webp`]
-      },
-      {
-        id:"cebolla-roja",
-        nombre:"Cebolla Roja Cabezona",
-        resumen:"Línea revitalizante (shampoo + mascarilla + tratamiento). Ideal cabello largo.",
-        tags:["Revitaliza","Cabello largo"],
-        categoria:"Tratamiento",
-        precio: 54900,
-        imgs:[`${CDN}cebolla-roja.webp`]
-      },
-      {
-        id:"tecno-pro-kid",
-        nombre:"Tecno Pro Kid",
-        resumen:"Cuidado suave y seguro para niños.",
-        tags:["Niños","Suavidad"],
-        categoria:"Niños",
-        precio: 29900,
-        imgs:[`${CDN}tecno-pro-kid.webp`]
-      }
+        // --- Botox Like ---
+  { id:"shampoo-desintoxicante-botox-like-300", nombre:"Shampoo Desintoxicante Botox Like", resumen:"Shampoo Desintoxicante Botox Like · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:34813, imgs:[`${CDN}shampoo-desintoxicante-botox-like-300.webp`] },
+  { id:"relleno-proteinico-botox-like-300", nombre:"Relleno Proteínico Botox Like", resumen:"Relleno Proteínico Botox Like · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:34813, imgs:[`${CDN}relleno-proteinico-botox-like-300.webp`] },
+  { id:"botox-like-chocolate-300", nombre:"Botox Like Chocolate", resumen:"Botox Like Chocolate · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-chocolate-300.webp`] },
+  { id:"botox-like-negro-300", nombre:"Botox Like Negro", resumen:"Botox Like Negro · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-negro-300.webp`] },
+  { id:"botox-like-plata-300", nombre:"Botox Like Plata", resumen:"Botox Like Plata · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-plata-300.webp`] },
+  { id:"botox-like-rojo-300", nombre:"Botox Like Rojo", resumen:"Botox Like Rojo · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-rojo-300.webp`] },
+  { id:"botox-like-borgona-300", nombre:"Botox Like Borgoña", resumen:"Botox Like Borgoña · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-borgona-300.webp`] },
+  { id:"botox-like-mechas-blancas-300", nombre:"Botox Like Mechas Blancas", resumen:"Botox Like Mechas Blancas · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:38813, imgs:[`${CDN}botox-like-mechas-blancas-300.webp`] },
+  { id:"desriz-efecto-cenicienta-300", nombre:"Desriz Efecto Cenicienta", resumen:"Desriz Efecto Cenicienta · Presentación: 300 ml.", tags:["300 ml"], categoria:"Botox Like", precio:40250, imgs:[`${CDN}desriz-efecto-cenicienta-300.webp`] },
+  { id:"relleno-proteinico-botox-like-90", nombre:"Relleno Proteínico Botox Like", resumen:"Relleno Proteínico Botox Like · Presentación: 90 ml.", tags:["90 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}relleno-proteinico-botox-like-90.webp`] },
+  { id:"botox-like-mechas-blancas-90", nombre:"Botox Like Mechas Blancas", resumen:"Botox Like Mechas Blancas · Presentación: 90 ml.", tags:["90 ml"], categoria:"Botox Like", precio:6438, imgs:[`${CDN}botox-like-mechas-blancas-90.webp`] },
+  { id:"silicona-argan-botox-60", nombre:"Silicona de Argán Botox", resumen:"Silicona de Argán Botox · Presentación: 60 ml.", tags:["60 ml"], categoria:"Botox Like", precio:35875, imgs:[`${CDN}silicona-argan-botox-60.webp`] },
+  { id:"tonico-botox-like-minoxidil-mujer-60", nombre:"Tónico Botox Like con Minoxidil Mujer", resumen:"Tónico Botox Like con Minoxidil para Mujer · Presentación: 60 ml.", tags:["60 ml"], categoria:"Botox Like", precio:36063, imgs:[`${CDN}tonico-botox-like-minoxidil-mujer-60.webp`] },
+  { id:"tonico-botox-like-minoxidil-hombre-60", nombre:"Tónico Botox Like con Minoxidil Hombre", resumen:"Tónico Botox Like con Minoxidil para Hombre · Presentación: 60 ml.", tags:["60 ml"], categoria:"Botox Like", precio:36063, imgs:[`${CDN}tonico-botox-like-minoxidil-hombre-60.webp`] },
+  { id:"shampoo-desintoxicante-botox-like-30", nombre:"Shampoo Desintoxicante Botox Like", resumen:"Shampoo Desintoxicante Botox Like · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3188, imgs:[`${CDN}shampoo-desintoxicante-botox-like-30.webp`] },
+  { id:"relleno-proteinico-botox-like-30", nombre:"Relleno Proteínico Botox Like", resumen:"Relleno Proteínico Botox Like · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3188, imgs:[`${CDN}relleno-proteinico-botox-like-30.webp`] },
+  { id:"botox-like-chocolate-30", nombre:"Botox Like Chocolate", resumen:"Botox Like Chocolate · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3250, imgs:[`${CDN}botox-like-chocolate-30.webp`] },
+  { id:"botox-like-negro-30", nombre:"Botox Like Negro", resumen:"Botox Like Negro · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3250, imgs:[`${CDN}botox-like-negro-30.webp`] },
+  { id:"botox-like-plata-30", nombre:"Botox Like Plata", resumen:"Botox Like Plata · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3250, imgs:[`${CDN}botox-like-plata-30.webp`] },
+  { id:"botox-like-rojo-30", nombre:"Botox Like Rojo", resumen:"Botox Like Rojo · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3250, imgs:[`${CDN}botox-like-rojo-30.webp`] },
+  { id:"botox-like-borgona-30", nombre:"Botox Like Borgoña", resumen:"Botox Like Borgoña · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:3250, imgs:[`${CDN}botox-like-borgona-30.webp`] },
+  { id:"botox-like-mechas-blancas-30", nombre:"Botox Like Mechas Blancas", resumen:"Botox Like Mechas Blancas · Presentación: 30 ml.", tags:["30 ml"], categoria:"Botox Like", precio:4063, imgs:[`${CDN}botox-like-mechas-blancas-30.webp`] },
+  { id:"ampolleta-relleno-proteinico-20", nombre:"Ampolleta Relleno Proteínico Botox Like", resumen:"Ampolleta Relleno Proteínico · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-relleno-proteinico-20.webp`] },
+  { id:"ampolleta-vitamina-e-20", nombre:"Ampolleta Vitamina E Botox Like", resumen:"Ampolleta Vitamina E · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-vitamina-e-20.webp`] },
+  { id:"ampolleta-aceite-argan-20", nombre:"Ampolleta Aceite de Argán Botox Like", resumen:"Ampolleta Aceite de Argán · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-aceite-argan-20.webp`] },
+  { id:"ampolleta-semillas-lino-20", nombre:"Ampolleta Semillas de Lino Botox Like", resumen:"Ampolleta Semillas de Lino · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-semillas-lino-20.webp`] },
+  { id:"ampolleta-acido-hialuronico-20", nombre:"Ampolleta Ácido Hialurónico Like", resumen:"Ampolleta Ácido Hialurónico · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-acido-hialuronico-20.webp`] },
+  { id:"ampolleta-cubre-canas-20", nombre:"Ampolleta Cubre Canas Botox Like", resumen:"Ampolleta Cubre Canas · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-cubre-canas-20.webp`] },
+  { id:"ampolleta-anticaida-20", nombre:"Ampolleta Anticaída Botox Like", resumen:"Ampolleta Anticaída · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-anticaida-20.webp`] },
+  { id:"ampolleta-aminoacidos-20", nombre:"Ampolleta Aminoácidos Botox Like", resumen:"Ampolleta Aminoácidos · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-aminoacidos-20.webp`] },
+  { id:"ampolleta-aceite-coco-20", nombre:"Ampolleta Aceite de Coco Botox Like", resumen:"Ampolleta Aceite de Coco · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-aceite-coco-20.webp`] },
+  { id:"ampolleta-minoxidil-20", nombre:"Ampolleta Minoxidil Botox Like", resumen:"Ampolleta Minoxidil · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-minoxidil-20.webp`] },
+  { id:"ampolla-control-grasa-20", nombre:"Ampolla Control Grasa Botox Like", resumen:"Ampolla Control Grasa · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolla-control-grasa-20.webp`] },
+  { id:"ampolleta-cebolla-roja-20", nombre:"Ampolleta Cebolla Roja Like", resumen:"Ampolleta Cebolla Roja · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-cebolla-roja-20.webp`] },
+  { id:"ampolleta-keratina-20", nombre:"Ampolleta Keratina Botox Like", resumen:"Ampolleta Keratina · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:5875, imgs:[`${CDN}ampolleta-keratina-20.webp`] },
+  { id:"ampolleta-la-bomba-20", nombre:"Ampolleta La Bomba", resumen:"Ampolleta La Bomba · Presentación: 20 ml.", tags:["20 ml"], categoria:"Botox Like", precio:6250, imgs:[`${CDN}ampolleta-la-bomba-20.webp`] },
+
+  // --- Botox ---
+  { id:"shampoo-antiresiduo-1-300", nombre:"Shampoo Antiresiduo #1", resumen:"Shampoo Antiresiduo #1 · Presentación: 300 ml.", tags:["Paso 1","300 ml"], categoria:"Botox", precio:36063, imgs:[`${CDN}shampoo-antiresiduo-1-300.webp`] },
+  { id:"alisador-termico-2-300", nombre:"Alisador Térmico #2", resumen:"Alisador Térmico #2 · Presentación: 300 ml.", tags:["Paso 2","300 ml"], categoria:"Botox", precio:99000, imgs:[`${CDN}alisador-termico-2-300.webp`] },
+  { id:"shampoo-sostenimiento-3-300", nombre:"Shampoo Sostenimiento #3", resumen:"Shampoo Sostenimiento #3 · Presentación: 300 ml.", tags:["Paso 3","300 ml"], categoria:"Botox", precio:36063, imgs:[`${CDN}shampoo-sostenimiento-3-300.webp`] },
+  { id:"mascarilla-sostenimiento-4-300", nombre:"Mascarilla de Sostenimiento #4", resumen:"Mascarilla de Sostenimiento #4 · Presentación: 300 ml.", tags:["Paso 4","300 ml"], categoria:"Botox", precio:36063, imgs:[`${CDN}mascarilla-sostenimiento-4-300.webp`] },
+  { id:"shampoo-antiresiduo-1-1000", nombre:"Shampoo Antiresiduo #1", resumen:"Shampoo Antiresiduo #1 · Presentación: 1000 ml.", tags:["Paso 1","1000 ml"], categoria:"Botox", precio:78688, imgs:[`${CDN}shampoo-antiresiduo-1-1000.webp`] },
+  { id:"alisador-termico-2-1000", nombre:"Alisador Térmico #2", resumen:"Alisador Térmico #2 · Presentación: 1000 ml.", tags:["Paso 2","1000 ml"], categoria:"Botox", precio:305938, imgs:[`${CDN}alisador-termico-2-1000.webp`] },
+  { id:"shampoo-sostenimiento-3-1000", nombre:"Shampoo Sostenimiento #3", resumen:"Shampoo Sostenimiento #3 · Presentación: 1000 ml.", tags:["Paso 3","1000 ml"], categoria:"Botox", precio:78688, imgs:[`${CDN}shampoo-sostenimiento-3-1000.webp`] },
+  { id:"mascarilla-sostenimiento-4-1000", nombre:"Mascarilla de Sostenimiento #4", resumen:"Mascarilla de Sostenimiento #4 · Presentación: 1000 ml.", tags:["Paso 4","1000 ml"], categoria:"Botox", precio:78688, imgs:[`${CDN}mascarilla-sostenimiento-4-1000.webp`] },
+  { id:"cura-puntas-60", nombre:"Cura Puntas", resumen:"Cura Puntas · Presentación: 60 ml.", tags:["60 ml"], categoria:"Botox", precio:35875, imgs:[`${CDN}cura-puntas-60.webp`] },
+
+  // --- Cannabis ---
+  { id:"shampoo-revitalizante-cannabis-300", nombre:"Shampoo Revitalizante de Cannabis", resumen:"Shampoo Revitalizante de Cannabis · Presentación: 300 ml.", tags:["300 ml"], categoria:"Cannabis", precio:34813, imgs:[`${CDN}shampoo-revitalizante-cannabis-300.webp`] },
+  { id:"tratamiento-revitalizante-cannabis-300", nombre:"Tratamiento Revitalizante de Cannabis", resumen:"Tratamiento Revitalizante de Cannabis · Presentación: 300 ml.", tags:["300 ml"], categoria:"Cannabis", precio:34813, imgs:[`${CDN}tratamiento-revitalizante-cannabis-300.webp`] },
+  { id:"tonico-minoxidil-cannabis-h-60", nombre:"Tónico Capilar Hombre Minoxidil y Cannabis", resumen:"Tónico Capilar Hombre (Minoxidil + Cannabis) · Presentación: 60 ml.", tags:["60 ml"], categoria:"Cannabis", precio:36063, imgs:[`${CDN}tonico-minoxidil-cannabis-h-60.webp`] },
+  { id:"tonico-minoxidil-cannabis-m-60", nombre:"Tónico Capilar Mujer Minoxidil y Cannabis", resumen:"Tónico Capilar Mujer (Minoxidil + Cannabis) · Presentación: 60 ml.", tags:["60 ml"], categoria:"Cannabis", precio:36063, imgs:[`${CDN}tonico-minoxidil-cannabis-m-60.webp`] },
+  { id:"tonico-cannabis-120", nombre:"Tónico Capilar de Cannabis", resumen:"Tónico Capilar de Cannabis · Presentación: 120 ml.", tags:["120 ml"], categoria:"Cannabis", precio:29813, imgs:[`${CDN}tonico-cannabis-120.webp`] },
+  { id:"silicona-cannabis-60", nombre:"Silicona de Cannabis", resumen:"Silicona de Cannabis · Presentación: 60 ml.", tags:["60 ml"], categoria:"Cannabis", precio:35875, imgs:[`${CDN}silicona-cannabis-60.webp`] },
+
+  // --- Cebolla ---
+  { id:"batido-leche-300", nombre:"Batido de Leche", resumen:"Batido de Leche · Presentación: 300 ml.", tags:["300 ml"], categoria:"Cebolla", precio:34813, imgs:[`${CDN}batido-leche-300.webp`] },
+  { id:"shampoo-cebolla-300", nombre:"Shampoo Revitalizante de Cebolla", resumen:"Shampoo Revitalizante de Cebolla · Presentación: 300 ml.", tags:["300 ml"], categoria:"Cebolla", precio:34813, imgs:[`${CDN}shampoo-cebolla-300.webp`] },
+  { id:"mascarilla-cebolla-300", nombre:"Mascarilla Revitalizante de Cebolla", resumen:"Mascarilla Revitalizante de Cebolla · Presentación: 300 ml.", tags:["300 ml"], categoria:"Cebolla", precio:34813, imgs:[`${CDN}mascarilla-cebolla-300.webp`] },
+  { id:"batido-leche-1000", nombre:"Batido de Leche", resumen:"Batido de Leche · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Cebolla", precio:78688, imgs:[`${CDN}batido-leche-1000.webp`] },
+  { id:"shampoo-cebolla-1000", nombre:"Shampoo Revitalizante de Cebolla", resumen:"Shampoo Revitalizante de Cebolla · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Cebolla", precio:78688, imgs:[`${CDN}shampoo-cebolla-1000.webp`] },
+  { id:"mascarilla-cebolla-1000", nombre:"Mascarilla Revitalizante de Cebolla", resumen:"Mascarilla Revitalizante de Cebolla · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Cebolla", precio:78688, imgs:[`${CDN}mascarilla-cebolla-1000.webp`] },
+  { id:"tonico-cebolla-120", nombre:"Tónico Capilar de Cebolla", resumen:"Tónico Capilar de Cebolla · Presentación: 120 ml.", tags:["120 ml"], categoria:"Cebolla", precio:29813, imgs:[`${CDN}tonico-cebolla-120.webp`] },
+
+  // --- 3D ---
+  { id:"shampoo-activador-3d-300", nombre:"Shampoo Activador 3D", resumen:"Shampoo Activador 3D · Presentación: 300 ml.", tags:["300 ml"], categoria:"3D", precio:34813, imgs:[`${CDN}shampoo-activador-3d-300.webp`] },
+  { id:"mascarilla-activador-3d-300", nombre:"Mascarilla Activador 3D", resumen:"Mascarilla Activador 3D · Presentación: 300 ml.", tags:["300 ml"], categoria:"3D", precio:34813, imgs:[`${CDN}mascarilla-activador-3d-300.webp`] },
+  { id:"solo-mechas-300", nombre:"Solo Mechas", resumen:"Solo Mechas · Presentación: 300 ml.", tags:["300 ml"], categoria:"3D", precio:38813, imgs:[`${CDN}solo-mechas-300.webp`] },
+  { id:"alisador-intensivo-300", nombre:"Alisador Intensivo", resumen:"Alisador Intensivo · Presentación: 300 ml.", tags:["300 ml"], categoria:"3D", precio:40250, imgs:[`${CDN}alisador-intensivo-300.webp`] },
+  { id:"tonico-activador-ionico-120", nombre:"Tónico Activador Iónico", resumen:"Tónico Activador Iónico · Presentación: 120 ml.", tags:["120 ml"], categoria:"3D", precio:40125, imgs:[`${CDN}tonico-activador-ionico-120.webp`] },
+  { id:"solo-mechas-30", nombre:"Solo Mechas", resumen:"Solo Mechas · Presentación: 30 ml.", tags:["30 ml"], categoria:"3D", precio:4063, imgs:[`${CDN}solo-mechas-30.webp`] },
+  { id:"silicona-alisadora-60", nombre:"Silicona Alisadora", resumen:"Silicona Alisadora · Presentación: 60 ml.", tags:["60 ml"], categoria:"3D", precio:35875, imgs:[`${CDN}silicona-alisadora-60.webp`] },
+
+  // --- Coco ---
+  { id:"shampoo-antiresiduo-coco-1-300", nombre:"Shampoo Antiresiduo #1 de Coco", resumen:"Shampoo Antiresiduo #1 de Coco · Presentación: 300 ml.", tags:["Paso 1","300 ml"], categoria:"Coco", precio:36063, imgs:[`${CDN}shampoo-antiresiduo-coco-1-300.webp`] },
+  { id:"alisador-coco-2-300", nombre:"Keratina y Aminoácidos Alisador #2 de Coco", resumen:"Keratina y Aminoácidos Alisador #2 de Coco · Presentación: 300 ml.", tags:["Paso 2","300 ml"], categoria:"Coco", precio:99000, imgs:[`${CDN}alisador-coco-2-300.webp`] },
+  { id:"shampoo-revitalizante-coco-3-300", nombre:"Shampoo Revitalizante #3 de Coco", resumen:"Shampoo Revitalizante #3 de Coco · Presentación: 300 ml.", tags:["Paso 3","300 ml"], categoria:"Coco", precio:36063, imgs:[`${CDN}shampoo-revitalizante-coco-3-300.webp`] },
+  { id:"mascarilla-revitalizante-coco-4-300", nombre:"Mascarilla Revitalizante #4 de Coco", resumen:"Mascarilla Revitalizante #4 de Coco · Presentación: 300 ml.", tags:["Paso 4","300 ml"], categoria:"Coco", precio:36063, imgs:[`${CDN}mascarilla-revitalizante-coco-4-300.webp`] },
+  { id:"shampoo-antiresiduo-coco-1-1000", nombre:"Shampoo Antiresiduo #1 de Coco", resumen:"Shampoo Antiresiduo #1 de Coco · Presentación: 1000 ml.", tags:["Paso 1","1000 ml"], categoria:"Coco", precio:78688, imgs:[`${CDN}shampoo-antiresiduo-coco-1-1000.webp`] },
+  { id:"alisador-coco-2-1000", nombre:"Keratina y Aminoácidos Alisador #2 de Coco", resumen:"Keratina y Aminoácidos Alisador #2 de Coco · Presentación: 1000 ml.", tags:["Paso 2","1000 ml"], categoria:"Coco", precio:305938, imgs:[`${CDN}alisador-coco-2-1000.webp`] },
+  { id:"shampoo-revitalizante-coco-3-1000", nombre:"Shampoo Revitalizante #3 de Coco", resumen:"Shampoo Revitalizante #3 de Coco · Presentación: 1000 ml.", tags:["Paso 3","1000 ml"], categoria:"Coco", precio:78688, imgs:[`${CDN}shampoo-revitalizante-coco-3-1000.webp`] },
+  { id:"mascarilla-revitalizante-coco-4-1000", nombre:"Mascarilla Revitalizante #4 de Coco", resumen:"Mascarilla Revitalizante #4 de Coco · Presentación: 1000 ml.", tags:["Paso 4","1000 ml"], categoria:"Coco", precio:78688, imgs:[`${CDN}mascarilla-revitalizante-coco-4-1000.webp`] },
+  { id:"tonico-coco-120", nombre:"Tónico Capilar de Coco", resumen:"Tónico Capilar de Coco · Presentación: 120 ml.", tags:["120 ml"], categoria:"Coco", precio:29813, imgs:[`${CDN}tonico-coco-120.webp`] },
+  { id:"silicona-coco-60", nombre:"Silicona de Coco", resumen:"Silicona de Coco · Presentación: 60 ml.", tags:["60 ml"], categoria:"Coco", precio:35875, imgs:[`${CDN}silicona-coco-60.webp`] },
+
+  // --- Express ---
+  { id:"shampoo-express-300", nombre:"Shampoo Express", resumen:"Shampoo Express · Presentación: 300 ml.", tags:["300 ml"], categoria:"Express", precio:34813, imgs:[`${CDN}shampoo-express-300.webp`] },
+  { id:"mascarilla-express-300", nombre:"Mascarilla Express", resumen:"Mascarilla Express · Presentación: 300 ml.", tags:["300 ml"], categoria:"Express", precio:34813, imgs:[`${CDN}mascarilla-express-300.webp`] },
+  { id:"keratina-express-300", nombre:"Keratina Express", resumen:"Keratina Express · Presentación: 300 ml.", tags:["300 ml"], categoria:"Express", precio:99000, imgs:[`${CDN}keratina-express-300.webp`] },
+
+  // --- Rubios Platinados ---
+  { id:"shampoo-anti-residuos-rp-300", nombre:"Shampoo Anti Residuos Rubios Platinados", resumen:"Shampoo Anti Residuos (Rubios Platinados) · Presentación: 300 ml.", tags:["Paso 1","300 ml"], categoria:"Rubios Platinados", precio:36025, imgs:[`${CDN}shampoo-anti-residuos-rp-300.webp`] },
+  { id:"alisador-termico-rp-300", nombre:"Alisador Térmico Rubios Platinados", resumen:"Alisador Térmico (Rubios Platinados) · Presentación: 300 ml.", tags:["Paso 2","300 ml"], categoria:"Rubios Platinados", precio:99000, imgs:[`${CDN}alisador-termico-rp-300.webp`] },
+  { id:"shampoo-sostenimiento-rp-300", nombre:"Shampoo Sostenimiento Rubios Platinados", resumen:"Shampoo Sostenimiento (Rubios Platinados) · Presentación: 300 ml.", tags:["Paso 3","300 ml"], categoria:"Rubios Platinados", precio:36025, imgs:[`${CDN}shampoo-sostenimiento-rp-300.webp`] },
+  { id:"mascarilla-sostenimiento-rp-300", nombre:"Mascarilla Sostenimiento Rubios Platinados", resumen:"Mascarilla Sostenimiento (Rubios Platinados) · Presentación: 300 ml.", tags:["Paso 4","300 ml"], categoria:"Rubios Platinados", precio:36025, imgs:[`${CDN}mascarilla-sostenimiento-rp-300.webp`] },
+  { id:"shampoo-anti-residuos-rp-1000", nombre:"Shampoo Anti Residuos Rubios Platinados", resumen:"Shampoo Anti Residuos (Rubios Platinados) · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Rubios Platinados", precio:78650, imgs:[`${CDN}shampoo-anti-residuos-rp-1000.webp`] },
+  { id:"alisador-termico-rp-1000", nombre:"Alisador Térmico Rubios Platinados", resumen:"Alisador Térmico (Rubios Platinados) · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Rubios Platinados", precio:310063, imgs:[`${CDN}alisador-termico-rp-1000.webp`] },
+  { id:"shampoo-sostenimiento-rp-1000", nombre:"Shampoo Sostenimiento Rubios Platinados", resumen:"Shampoo Sostenimiento (Rubios Platinados) · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Rubios Platinados", precio:78650, imgs:[`${CDN}shampoo-sostenimiento-rp-1000.webp`] },
+  { id:"mascarilla-sostenimiento-rp-1000", nombre:"Mascarilla Sostenimiento Rubios Platinados", resumen:"Mascarilla Sostenimiento (Rubios Platinados) · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Rubios Platinados", precio:78650, imgs:[`${CDN}mascarilla-sostenimiento-rp-1000.webp`] },
+
+  // --- Liso Laminado ---
+  { id:"shampoo-anti-residuos-ll-300", nombre:"Shampoo Anti Residuos Liso Laminado", resumen:"Shampoo Anti Residuos Liso Laminado · Presentación: 300 ml.", tags:["300 ml"], categoria:"Liso Laminado", precio:40125, imgs:[`${CDN}shampoo-anti-residuos-ll-300.webp`] },
+  { id:"alisador-termico-ll-300", nombre:"Alisador Térmico Liso Laminado", resumen:"Alisador Térmico Liso Laminado · Presentación: 300 ml.", tags:["300 ml"], categoria:"Liso Laminado", precio:115750, imgs:[`${CDN}alisador-termico-ll-300.webp`] },
+  { id:"shampoo-sostenimiento-ll-300", nombre:"Shampoo Sostenimiento Liso Laminado", resumen:"Shampoo Sostenimiento Liso Laminado · Presentación: 300 ml.", tags:["300 ml"], categoria:"Liso Laminado", precio:40125, imgs:[`${CDN}shampoo-sostenimiento-ll-300.webp`] },
+  { id:"mascarilla-sostenimiento-ll-300", nombre:"Mascarilla Sostenimiento Liso Laminado", resumen:"Mascarilla Sostenimiento Liso Laminado · Presentación: 300 ml.", tags:["300 ml"], categoria:"Liso Laminado", precio:40125, imgs:[`${CDN}mascarilla-sostenimiento-ll-300.webp`] },
+  { id:"shampoo-anti-residuos-ll-1000", nombre:"Shampoo Anti Residuos Liso Laminado", resumen:"Shampoo Anti Residuos Liso Laminado · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Liso Laminado", precio:85500, imgs:[`${CDN}shampoo-anti-residuos-ll-1000.webp`] },
+  { id:"alisador-termico-ll-1000", nombre:"Alisador Térmico Liso Laminado", resumen:"Alisador Térmico Liso Laminado · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Liso Laminado", precio:340750, imgs:[`${CDN}alisador-termico-ll-1000.webp`] },
+  { id:"shampoo-sostenimiento-ll-1000", nombre:"Shampoo Sostenimiento Liso Laminado", resumen:"Shampoo Sostenimiento Liso Laminado · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Liso Laminado", precio:85500, imgs:[`${CDN}shampoo-sostenimiento-ll-1000.webp`] },
+  { id:"mascarilla-sostenimiento-ll-1000", nombre:"Mascarilla Sostenimiento Liso Laminado", resumen:"Mascarilla Sostenimiento Liso Laminado · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"Liso Laminado", precio:85500, imgs:[`${CDN}mascarilla-sostenimiento-ll-1000.webp`] },
+  { id:"tratamiento-termoprotector-ll-300", nombre:"Tratamiento Termoprotector Liso Laminado", resumen:"Tratamiento Termoprotector Liso Laminado · Presentación: 300 ml.", tags:["300 ml"], categoria:"Liso Laminado", precio:40125, imgs:[`${CDN}tratamiento-termoprotector-ll-300.webp`] },
+
+  // --- 4K ---
+  { id:"alisador-top-liss-shine-4k-1000", nombre:"Alisador Top Liss Shine 4K", resumen:"Alisador Top Liss Shine 4K · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"4K", precio:481250, imgs:[`${CDN}alisador-top-liss-shine-4k-1000.webp`] },
+  { id:"mascarilla-top-liss-shine-4k-400", nombre:"Mascarilla Top Liss Shine 4K", resumen:"Mascarilla Top Liss Shine 4K · Presentación: 400 ml.", tags:["400 ml"], categoria:"4K", precio:82500, imgs:[`${CDN}mascarilla-top-liss-shine-4k-400.webp`] },
+  { id:"coctel-reparador-shok-4k-20", nombre:"Cóctel Reparador Shock Capilar 4K", resumen:"Cóctel Reparador Shock Capilar 4K · Presentación: 20 ml.", tags:["20 ml"], categoria:"4K", precio:16500, imgs:[`${CDN}coctel-reparador-shok-4k-20.webp`] },
+
+  // --- Farma Plex ---
+  { id:"bloon-booster-1-20", nombre:"BLOON BOOSTER Paso 1", resumen:"BLOON BOOSTER Paso 1 · Presentación: 20 ml.", tags:["Paso 1","20 ml"], categoria:"Farma Plex", precio:16500, imgs:[`${CDN}bloon-booster-1-20.webp`] },
+  { id:"fibra-protec-2-120", nombre:"FIBRA PROTEC Paso 2", resumen:"FIBRA PROTEC Paso 2 · Presentación: 120 ml.", tags:["Paso 2","120 ml"], categoria:"Farma Plex", precio:55000, imgs:[`${CDN}fibra-protec-2-120.webp`] },
+  { id:"neutral-filler-3-300", nombre:"NEUTRAL FILLER Paso 3", resumen:"NEUTRAL FILLER Paso 3 · Presentación: 300 ml.", tags:["Paso 3","300 ml"], categoria:"Farma Plex", precio:55000, imgs:[`${CDN}neutral-filler-3-300.webp`] },
+  { id:"shinner-plex-4-300", nombre:"SHINNER PLEX Paso 4", resumen:"SHINNER PLEX Paso 4 · Presentación: 300 ml.", tags:["Paso 4","300 ml"], categoria:"Farma Plex", precio:41250, imgs:[`${CDN}shinner-plex-4-300.webp`] },
+  { id:"moisture-extreme-plex-5-300", nombre:"MOISTURE EXTREME PLEX Paso 5", resumen:"MOISTURE EXTREME PLEX Paso 5 · Presentación: 300 ml.", tags:["Paso 5","300 ml"], categoria:"Farma Plex", precio:41250, imgs:[`${CDN}moisture-extreme-plex-5-300.webp`] },
+  { id:"serum-shield-power-6-30", nombre:"SERUM SHIELD POWER Paso 6", resumen:"SERUM SHIELD POWER Paso 6 · Presentación: 30 ml.", tags:["Paso 6","30 ml"], categoria:"Farma Plex", precio:48125, imgs:[`${CDN}serum-shield-power-6-30.webp`] },
+
+  // --- TecnoPro (kits de 120 ml y 1000 ml) ---
+  { id:"shampoo-antiresiduo-1-120", nombre:"Shampoo Antiresiduo 1", resumen:"Shampoo Antiresiduo 1 · Presentación: 120 ml.", tags:["120 ml"], categoria:"TecnoPro", precio:12375, imgs:[`${CDN}shampoo-antiresiduo-1-120.webp`] },
+  { id:"alisador-termico-2-120", nombre:"Alisador Térmico 2", resumen:"Alisador Térmico 2 · Presentación: 120 ml.", tags:["120 ml"], categoria:"TecnoPro", precio:41250, imgs:[`${CDN}alisador-termico-2-120.webp`] },
+  { id:"shampoo-sostenimiento-3-120", nombre:"Shampoo Sostenimiento 3", resumen:"Shampoo Sostenimiento 3 · Presentación: 120 ml.", tags:["120 ml"], categoria:"TecnoPro", precio:12375, imgs:[`${CDN}shampoo-sostenimiento-3-120.webp`] },
+  { id:"tratamiento-sostenimiento-4-120", nombre:"Tratamiento Sostenimiento 4", resumen:"Tratamiento Sostenimiento 4 · Presentación: 120 ml.", tags:["120 ml"], categoria:"TecnoPro", precio:12375, imgs:[`${CDN}tratamiento-sostenimiento-4-120.webp`] },
+  { id:"rubios-platino-120", nombre:"Rubios Platinados", resumen:"Rubios Platinados · Presentación: 120 ml.", tags:["120 ml"], categoria:"TecnoPro", precio:15125, imgs:[`${CDN}rubios-platino-120.webp`] },
+  { id:"shampoo-antiresiduo-1-1000-tec", nombre:"Shampoo Antiresiduo 1", resumen:"Shampoo Antiresiduo 1 · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"TecnoPro", precio:78650, imgs:[`${CDN}shampoo-antiresiduo-1-1000-tec.webp`] },
+  { id:"alisador-termico-2-1000-tec", nombre:"Alisador Térmico 2", resumen:"Alisador Térmico 2 · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"TecnoPro", precio:305938, imgs:[`${CDN}alisador-termico-2-1000-tec.webp`] },
+  { id:"shampoo-sostenimiento-3-1000-tec", nombre:"Shampoo Sostenimiento 3", resumen:"Shampoo Sostenimiento 3 · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"TecnoPro", precio:78650, imgs:[`${CDN}shampoo-sostenimiento-3-1000-tec.webp`] },
+  { id:"tratamiento-sostenimiento-4-1000-tec", nombre:"Tratamiento Sostenimiento 4", resumen:"Tratamiento Sostenimiento 4 · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"TecnoPro", precio:78650, imgs:[`${CDN}tratamiento-sostenimiento-4-1000-tec.webp`] },
+  { id:"rubios-platino-1000", nombre:"Rubios Platinados", resumen:"Rubios Platinados · Presentación: 1000 ml.", tags:["1000 ml"], categoria:"TecnoPro", precio:78788, imgs:[`${CDN}rubios-platino-1000.webp`] },
+
+  // --- Rizos ---
+  { id:"shampoo-hidratante-rizos-1-300", nombre:"Shampoo Capilar Hidratante Rizos #1", resumen:"Shampoo Capilar Hidratante Rizos #1 · Presentación: 300 ml.", tags:["#1","300 ml"], categoria:"Rizos", precio:41250, imgs:[`${CDN}shampoo-hidratante-rizos-1-300.webp`] },
+  { id:"mascarilla-doble-poder-rizos-2-300", nombre:"Mascarilla Doble Poder Rizos #2", resumen:"Mascarilla Doble Poder Rizos #2 · Presentación: 300 ml.", tags:["#2","300 ml"], categoria:"Rizos", precio:41250, imgs:[`${CDN}mascarilla-doble-poder-rizos-2-300.webp`] },
+  { id:"tratamiento-fijador-rizos-3-300", nombre:"Tratamiento Fijador Rizos #3", resumen:"Tratamiento Fijador Rizos #3 · Presentación: 300 ml.", tags:["#3","300 ml"], categoria:"Rizos", precio:41250, imgs:[`${CDN}tratamiento-fijador-rizos-3-300.webp`] },
+  { id:"leave-in-hidratante-rizos-4-200", nombre:"Leave In Hidratante Rizos #4", resumen:"Leave In Hidratante Rizos #4 · Presentación: 200 ml.", tags:["#4","200 ml"], categoria:"Rizos", precio:41250, imgs:[`${CDN}leave-in-hidratante-rizos-4-200.webp`] },
+
+  // --- Niños ---
+  { id:"shampoo-pro-kids-300", nombre:"Shampoo Pro Kids", resumen:"Shampoo Pro Kids · Presentación: 300 ml.", tags:["300 ml"], categoria:"Niños", precio:37500, imgs:[`${CDN}shampoo-pro-kids-300.webp`] },
+  { id:"tratamiento-pro-kids-300", nombre:"Tratamiento Capilar Pro Kids", resumen:"Tratamiento Capilar Pro Kids · Presentación: 300 ml.", tags:["300 ml"], categoria:"Niños", precio:37500, imgs:[`${CDN}tratamiento-pro-kids-300.webp`] },
+  { id:"leave-in-pro-kids-300", nombre:"Leave In Pro Kids", resumen:"Leave In Pro Kids · Presentación: 300 ml.", tags:["300 ml"], categoria:"Niños", precio:37500, imgs:[`${CDN}leave-in-pro-kids-300.webp`] },
+  { id:"ampolla-911-20", nombre:"Ampolla Capilar 911", resumen:"Ampolla Capilar 911 · Presentación: 20 ml.", tags:["20 ml"], categoria:"Niños", precio:5875, imgs:[`${CDN}ampolla-911-20.webp`] },
+  { id:"ampolla-bye-caida-20", nombre:"Ampolla Bye Caída", resumen:"Ampolla Bye Caída · Presentación: 20 ml.", tags:["20 ml"], categoria:"Niños", precio:5875, imgs:[`${CDN}ampolla-bye-caida-20.webp`] },
+  { id:"ampolla-nutri-plus-20", nombre:"Ampolla Nutri+", resumen:"Ampolla Nutri+ · Presentación: 20 ml.", tags:["20 ml"], categoria:"Niños", precio:5875, imgs:[`${CDN}ampolla-nutri-plus-20.webp`] },
+  { id:"ampolla-hidratec-20", nombre:"Ampolla HIDRATEC", resumen:"Ampolla HIDRATEC · Presentación: 20 ml.", tags:["20 ml"], categoria:"Niños", precio:5875, imgs:[`${CDN}ampolla-hidratec-20.webp`] }
     ];
 
     // ======= RENDER =======
